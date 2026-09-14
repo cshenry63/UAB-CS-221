@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaJam Coffee Bar Jobs</title>
+</head>
+<body>
+    <header>
+        <h1>JavaJam Coffee Bar</h1>
+        <nav>
+            <strong>
+                <a href="index.html">Home</a>&nbsp;&nbsp;&nbsp;
+                <a href="menu.html">Menu</a>&nbsp;&nbsp;&nbsp;
+                <a href="music.html">Music</a>&nbsp;&nbsp;&nbsp;
+                <a href="jobs.html">Jobs</a>
+            </strong>
+        </nav>
+    </header>
 
+    <main>
+        <h2>Work at JavaJam</h2>
+
+        <section>
+            <article>
+                <h3>Barista</h3>
+                <p>
+                    Our baristas are the heart of JavaJam, greeting customers with a smile and crafting
+                    quality coffee and tea beverages. This position requires strong customer service
+                    skills and the ability to work well in a fast-paced environment. Hourly wage: $12.00.
+                </p>
+                <ul>
+                    <li>Prepare and serve coffee, tea, and specialty drinks</li>
+                    <li>Take customer orders and process payments</li>
+                    <li>Maintain a clean and organized work area</li>
+                    <li>Restock supplies and ingredients as needed</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Kitchen Assistant</h3>
+                <p>
+                    The kitchen assistant helps prepare light meals, snacks, and baked goods served at
+                    JavaJam. This role requires attention to detail and knowledge of basic food safety
+                    practices. Hourly wage: $11.50.
+                </p>
+                <ul>
+                    <li>Prepare salads, sandwiches, and baked goods</li>
+                    <li>Follow food safety and sanitation guidelines</li>
+                    <li>Assist with inventory and food storage</li>
+                    <li>Wash dishes and keep the kitchen clean</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Event Coordinator</h3>
+                <p>
+                    The event coordinator organizes music nights, poetry readings, and open mic events
+                    at JavaJam. This role requires strong communication skills and creativity.
+                    Hourly wage: $14.00.
+                </p>
+                <ul>
+                    <li>Schedule musicians and performers</li>
+                    <li>Promote events on social media and in-store signage</li>
+                    <li>Set up and break down event equipment</li>
+                    <li>Coordinate with staff to ensure smooth events</li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2>Apply to work at JavaJam</h2>
+            <form method="post" action="">
+                <p>
+                    <label for="position">Applying For:</label>
+                    <select id="position" name="position" required>
+                        <option value="barista">Barista</option>
+                        <option value="kitchen-assistant">Kitchen Assistant</option>
+                        <option value="event-coordinator">Event Coordinator</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </p>
+
+                <p>
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                </p>
+
+                <p>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                           placeholder="888-555-5555" required>
+                </p>
+
+                <p>
+                    <label for="about">About You:</label><br>
+                    <textarea id="about" name="about" rows="5" cols="40" required></textarea>
+                </p>
+
+                <p>
+                    <label for="resume">Resume:</label>
+                    <input type="file" id="resume" name="resume" required>
+                </p>
+
+                <p>
+                    <input type="submit" value="Submit">
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <small><i>Copyright &copy; 2023 JavaJam Coffee Bar</i></small><br>
+        <small><i><a href="mailto:email@gmail.com">Caitlyn Henry</a></i></small>
+    </footer>
+</body>
+</html>
