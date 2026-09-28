@@ -1,1 +1,63 @@
+/* Global Page Body Styles */
+body {
+    background-color: #FCEBB6;
+    color: #221811;
+    font-family: Tahoma, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
+/* Centered Page Wrapper */
+#wrapper {
+    width: 80%;
+    background-color: #FEFAEB;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Header Section Styling */
+header {
+    background-color: #D2B48C;
+    color: #8C3826;
+    text-align: center;
+}
+
+/* Header Heading Line Height */
+h1 {
+    line-height: 200%;
+    margin: 0;
+}
+
+/* Section Headings Styling */
+h2 {
+    color: #8C3826;
+}
+
+/* Navigation Area Styling */
+nav {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+/* Table Border Styling for Music Page */
+table {
+    border: 2px solid #221811;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #221811;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Footer Section Styling */
+footer {
+    background-color: #D2B48C;
+    font-size: 0.60em;
+    font-style: italic;
+    text-align: center;
+    padding: 10px 0;
+}
