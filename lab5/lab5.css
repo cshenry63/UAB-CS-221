@@ -1,7 +1,4 @@
-/* ===================================
-   General Page Styling
-   =================================== */
-
+/* Page Style*/
 * {
     box-sizing: border-box;
 }
@@ -13,66 +10,41 @@ html {
 body {
     margin: 0;
     padding: 0;
-
     background-color: #f2eddb;
     color: #000000;
-
     font-family: "Lexend Peta", Arial, sans-serif;
-
     font-size: 14px;
     line-height: 1.8;
 }
 
-
-/* ===================================
-   Sticky Navigation Header
-   =================================== */
-
+/* Sticky Navigation Bar */
 header {
     background-color: #b76500;
-
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     padding: 25px 8%;
-
     border-bottom: 2px solid #000000;
-
     /* Keeps navigation visible while scrolling */
     position: sticky;
     top: 0;
-
     /* Keeps the header above other content */
     z-index: 1000;
 }
 
-
-/* Website Name / Logo */
-
+/* Website Name */
 .logo {
     font-family: "Inter", Arial, sans-serif;
-
     font-size: 24px;
-
     font-weight: 700;
 }
 
-
-/* ===================================
-   Navigation Menu
-   =================================== */
-
+/* Navigation Bar*/
 nav ul {
     list-style-type: none;
-
     display: flex;
-
     gap: 35px;
-
     margin: 0;
-
     padding: 0;
 }
 
@@ -82,74 +54,41 @@ nav li {
 
 nav a {
     color: #000000;
-
     font-size: 12px;
-
     font-weight: 500;
-
     text-decoration: none;
-
     padding: 10px;
-
     transition: 0.3s;
 }
 
-
 /* Navigation Hover Effect */
-
 nav a:hover {
     background-color: #000000;
-
     color: #ffffff;
-
     text-decoration: underline;
 }
 
-
-/* ===================================
-   Main Content Area
-   =================================== */
-
+/* Main Area */
 main {
     width: 85%;
-
     max-width: 1200px;
-
     margin: 0 auto;
 }
 
-
-/* ===================================
-   General Section Styling
-   =================================== */
-
+/* Section Style */
 section {
     min-height: 600px;
-
     padding: 70px 0;
-
     border-bottom: 1px solid #000000;
-
     /* Prevents sticky nav from covering headings */
     scroll-margin-top: 110px;
 }
-
-
-/*
-Assignment Requirement:
-Adds 83.92px of padding to the
-second child of every section.
-*/
 
 section > :nth-child(2) {
     padding: 83.92px;
 }
 
-
-/* ===================================
-   Heading Typography
-   =================================== */
-
+/* Heading style*/
 h1,
 h2,
 h3 {
@@ -158,113 +97,68 @@ h3 {
 
 h1 {
     font-size: 42px;
-
     text-align: center;
-
     margin-top: 0;
-
     margin-bottom: 30px;
 }
 
 h2 {
     font-size: 24px;
-
     margin-top: 25px;
-
     margin-bottom: 10px;
 }
 
 h3 {
     font-size: 18px;
-
     margin-bottom: 10px;
 }
 
-
-/* ===================================
-   Paragraph Typography
-   =================================== */
-
+/* Paragraph style */
 p {
     font-family: "Lexend Peta", Arial, sans-serif;
-
     font-size: 13px;
-
     line-height: 2;
-
     margin-top: 10px;
-
     margin-bottom: 20px;
 }
 
-
-/* ===================================
-   About Me Section
-   =================================== */
-
+/*   About Me Section*/
 .about-content {
     display: flex;
-
     align-items: flex-start;
-
     justify-content: center;
-
     gap: 60px;
-
     max-width: 1100px;
-
     margin: auto;
 }
 
-
-/* About Me Headshot */
-
+/* About Me: image*/
 .about-content img {
     width: 42%;
-
     max-width: 400px;
-
     height: 520px;
-
     object-fit: cover;
-
     object-position: center top;
-
     border: 2px solid #000000;
 }
 
-
 /* About Me Text */
-
 .about-text {
     width: 50%;
 }
 
-
-/* ===================================
-   Lists
-   =================================== */
-
+/* Lists */
 ul {
     line-height: 2;
 }
 
-
-/* ===================================
-   Resume Section
-   =================================== */
-
+/* Resume Section */
 .resume-content {
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-start;
-
     gap: 60px;
-
     max-width: 1000px;
-
     margin: auto;
 }
 
@@ -272,89 +166,56 @@ ul {
     width: 50%;
 }
 
-
-/* ===================================
-   Portfolio Section
-   =================================== */
-
+/* Portfolio Section*/
 .project-content {
     max-width: 750px;
-
     margin: auto;
-
     text-align: center;
 }
 
-
-/* ===================================
-   Buttons / Project Links
-   =================================== */
-
+/* Project Links */
 .button {
     display: inline-block;
-
     background-color: #b76500;
-
     color: #000000;
-
     border: 2px solid #000000;
-
     padding: 12px 25px;
-
     margin-top: 15px;
-
     font-weight: bold;
-
     text-decoration: none;
-
     transition: 0.3s;
 }
 
 .button:hover {
     background-color: #000000;
-
     color: #ffffff;
-
     text-decoration: none;
 }
 
-
-/* ===================================
-   General Link Styling
-   =================================== */
-
+/* Link Style */
 a {
     color: #8a4700;
-
     text-decoration: underline;
 }
 
 a:hover {
     color: #000000;
-
     text-decoration: none;
 }
 
-
-/* ===================================
-   Contact / Socials Section
-   =================================== */
-
+/* Contact Section */
 #contact {
     text-align: center;
 }
 
 .contact-content {
     max-width: 700px;
-
     margin: auto;
 }
 
 .contact-list {
     list-style-type: none;
-
     margin: 20px 0;
-
     padding: 0;
 }
 
@@ -362,32 +223,20 @@ a:hover {
     margin: 20px;
 }
 
-
-/* ===================================
-   Footer
-   =================================== */
-
+/* Footer */
 footer {
     background-color: #000000;
-
     color: #ffffff;
-
     display: flex;
-
     flex-wrap: wrap;
-
     justify-content: space-between;
-
     align-items: flex-start;
-
     padding: 60px 8% 30px;
-
     margin-top: 0;
 }
 
 .footer-left h2 {
     color: #ffffff;
-
     margin-top: 0;
 }
 
@@ -395,127 +244,37 @@ footer {
     margin: 5px 0;
 }
 
-
-/* Footer Navigation */
-
+/* Footer Nav */
 .footer-links {
     display: flex;
-
     flex-direction: column;
-
     gap: 12px;
 }
 
 .footer-links a {
     color: #ffffff;
-
     text-decoration: none;
 }
 
 .footer-links a:hover {
     color: #b76500;
-
     text-decoration: underline;
 }
 
-
 /* Copyright */
-
 .copyright {
     width: 100%;
-
     text-align: center;
-
     border-top: 1px solid #555555;
-
     margin-top: 50px;
-
     padding-top: 20px;
 }
-
 .copyright p {
     margin: 5px;
 }
 
-
-/* ===================================
-   General Image Styling
-   =================================== */
-
+/* Image Style */
 img {
     max-width: 100%;
-
     display: block;
-}
-
-
-/* ===================================
-   Mobile / Smaller Screen Styling
-   =================================== */
-
-@media (max-width: 800px) {
-
-    header {
-        flex-direction: column;
-
-        gap: 15px;
-    }
-
-
-    nav ul {
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        gap: 10px;
-    }
-
-
-    main {
-        width: 90%;
-    }
-
-
-    section > :nth-child(2) {
-        padding: 83.92px;
-    }
-
-
-    .about-content {
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-
-    .about-content img {
-        width: 100%;
-
-        max-width: 400px;
-
-        height: auto;
-    }
-
-
-    .about-text {
-        width: 100%;
-    }
-
-
-    .resume-content {
-        flex-direction: column;
-    }
-
-
-    .resume-column {
-        width: 100%;
-    }
-
-
-    footer {
-        flex-direction: column;
-
-        gap: 30px;
-    }
-
 }
