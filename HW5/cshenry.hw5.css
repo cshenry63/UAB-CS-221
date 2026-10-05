@@ -1,47 +1,46 @@
-### 2. CSS File: `[blazerId].hw5.css`
-
-Create a second file in the same folder, name it with your BlazerID (e.g., `smith.hw5.css`), and paste the following code:
-
-```css
-/* Wildcard selector to reset margin and padding, and set box-sizing */
+/* Removes default spacing and applies border-box sizing */
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-/* Header styling */
+/* Header */
 header {
     position: sticky;
     top: 0;
     text-align: center;
-    border-bottom: 2px solid #262930;
-    
-    /* Unique colors with adequate contrast */
-    background-color: #e8e4b8; /* Pale yellow */
+
+    background-color: #f2efb3;
     color: #262930;
+
+    border-bottom: 3px solid #444444;
 }
 
-/* Main styling */
+/* Main content */
 main {
     width: 80%;
-    margin: 0 auto; /* Centers the element horizontally */
-    
-    /* Unique colors with adequate contrast */
-    background-color: #9cba7f; /* Pale green */
-    color: #1a2b1f;
+    margin: 20px auto;
+
+    background-color: #a7c98a;
+    color: #182018;
 }
 
-/* Footer styling */
+/* Footer */
 footer {
     position: fixed;
     bottom: 0;
-    width: 100%; /* Takes up entire viewport width */
+    width: 100%;
+
     text-align: center;
-    
-    /* Unique colors with adequate contrast */
-    background-color: #bce6fa; /* Light blue */
-    color: #1a283b;
+
+    background-color: #b7e4f7;
+    color: #1c2730;
+}
+
+/* Paragraph styling */
+p {
+    padding: 1em;
 }
 
 /* Paragraph styling */
