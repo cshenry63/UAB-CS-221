@@ -7,20 +7,18 @@
 
     <title>Caitlyn Henry | Personal Portfolio</title>
 
-    <!-- Google Fonts -->
+    <!-- Google font -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lexend+Peta:wght@300;400;500&display=swap"
         rel="stylesheet">
 
-    <!-- External CSS File -->
+    <!-- CSS File -->
     <link rel="stylesheet" href="lab5.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         Navigation Header
-         ========================= -->
+    <!-- Navigation Header -->
     <header>
 
         <div class="logo">
@@ -38,29 +36,17 @@
 
     </header>
 
-
-    <!-- =========================
-         Main Website Content
-         ========================= -->
+    <!-- Main Content -->
     <main>
-
-
-        <!-- =========================
-             About Me Section
-             ========================= -->
+        <!-- About Me Section -->
         <section id="about">
-
             <h1>About Me</h1>
-
             <div class="about-content">
-
-                <!-- Professional Headshot -->
+                <!-- Image of me -->
                 <img
                     src="cshenry_uab_edu-3688270d-edit.jpg"
-                    alt="Professional headshot of Caitlyn Henry">
-
+                    alt="Image of me">
                 <div class="about-text">
-
                     <p>
                         I am a student at the University of Alabama at Birmingham
                         majoring in Accounting and Computer Science. I am interested
@@ -81,31 +67,20 @@
 
         </section>
 
-
-        <!-- =========================
-             Resume Section
-             ========================= -->
+        <!-- Resume Section -->
         <section id="resume">
-
             <h1>Resume</h1>
-
             <div class="resume-content">
-
-                <!-- Left Resume Column -->
+                <!-- Left Column for resume -->
                 <div class="resume-column">
-
                     <h2>Education</h2>
-
                     <h3>University of Alabama at Birmingham</h3>
-
                     <p>
                         Bachelor of Science in Accounting
                     </p>
-
                     <p>
                         Bachelor of Arts in Computer Science
                     </p>
-
 
                     <h2>Skills</h2>
 
@@ -122,18 +97,14 @@
 
                 </div>
 
-
-                <!-- Right Resume Column -->
+                <!-- Right Column for resume -->
                 <div class="resume-column">
-
                     <h2>Professional Interests</h2>
-
                     <p>
                         My professional interests include auditing,
                         accounting, technology, data analysis,
                         information systems, and software development.
                     </p>
-
 
                     <h2>Interests</h2>
 
@@ -144,7 +115,6 @@
                         <li>Data Analysis</li>
                         <li>Mentoring and Leadership</li>
                     </ul>
-
 
                     <!-- Resume Button -->
                     <a
@@ -160,26 +130,17 @@
 
         </section>
 
-
-        <!-- =========================
-             Portfolio Section
-             ========================= -->
+        <!-- Portfolio Section -->
         <section id="projects">
-
             <h1>Portfolio</h1>
-
             <div class="project-content">
-
                 <h2>Red Panda Infomercial</h2>
-
                 <p>
                     I created an infomercial about saving red pandas.
                     This project allowed me to combine research,
                     communication, creativity, and video production.
                 </p>
-
-
-                <!-- Infomercial Project Link -->
+                <!-- Infomercial Link -->
                 <a
                     class="button"
                     href="https://vimeo.com/1216812796?share=copy&amp;fl=sv&amp;fe=ci"
@@ -191,31 +152,21 @@
 
         </section>
 
-
-        <!-- =========================
-             Socials / Contact Section
-             ========================= -->
+        <!-- Contact Section -->
         <section id="contact">
-
             <h1>Socials</h1>
-
             <div class="contact-content">
-
                 <p>
                     I am always open to connecting with others.
                 </p>
 
                 <ul class="contact-list">
-
-                    <!-- Email -->
                     <li>
                         Email:
                         <a href="mailto:cshenry@uab.edu">
                             cshenry@uab.edu
                         </a>
                     </li>
-
-                    <!-- Canva Portfolio -->
                     <li>
                         <a
                             href="https://caitlynhenportfolio.my.canva.site/"
@@ -232,15 +183,10 @@
 
     </main>
 
-    <!-- =========================
-         Footer
-         ========================= -->
+    <!-- Footer-->
     <footer>
-
         <div class="footer-left">
-
             <h2>Caitlyn Henry</h2>
-
             <p>
                 Accounting + Computer Science
             </p>
@@ -251,28 +197,19 @@
 
         </div>
 
-
-        <!-- Footer Navigation Links -->
+        <!-- Footer nav links -->
         <div class="footer-links">
-
             <a href="#about">About Me</a>
-
             <a href="#resume">Resume</a>
-
             <a href="#projects">Portfolio</a>
-
             <a href="#contact">Socials</a>
 
         </div>
-
-
         <!-- Copyright -->
         <div class="copyright">
-
             <p>
                 &copy; 2026 Caitlyn Henry. All rights reserved.
             </p>
-
             <p>
                 Personal Portfolio Website
             </p>
