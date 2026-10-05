@@ -13,7 +13,7 @@
         rel="stylesheet">
 
     <!-- External CSS File -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lab5.css">
 </head>
 
 <body>
@@ -205,7 +205,6 @@
                     I am always open to connecting with others.
                 </p>
 
-
                 <ul class="contact-list">
 
                     <!-- Email -->
@@ -215,15 +214,6 @@
                             cshenry@uab.edu
                         </a>
                     </li>
-
-
-                    <!-- GitHub -->
-                    <li>
-                        <a href="#">
-                            GitHub
-                        </a>
-                    </li>
-
 
                     <!-- Canva Portfolio -->
                     <li>
@@ -241,7 +231,6 @@
         </section>
 
     </main>
-
 
     <!-- =========================
          Footer
