@@ -43,7 +43,7 @@ header {
 nav ul {
     list-style-type: none;
     display: flex;
-    gap: 35px;
+    gap: 40px;
     margin: 0;
     padding: 0;
 }
@@ -54,10 +54,11 @@ nav li {
 
 nav a {
     color: #000000;
-    font-size: 12px;
-    font-weight: 500;
     text-decoration: none;
-    padding: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 12px;
     transition: 0.3s;
 }
 
