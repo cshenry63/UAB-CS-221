@@ -138,12 +138,10 @@ footer {
     header h1 {
         font-size: 30px;
     }
-
     .product-card {
         padding: 16px;
         min-height: 210px;
     }
-
     .product-card button {
         font-size: 16px;
     }
