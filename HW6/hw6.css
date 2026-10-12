@@ -1,1 +1,150 @@
+* {
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: linear-gradient(120deg, #4facfe, #90fbd2, #8061ff);
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 24px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+main {
+    padding: 48px 30px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    min-height: 228px;
+}
+
+.product-card:hover {
+    background-color: #f1f8ff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.product-card h2 {
+    margin: 2px 0 14px;
+    font-size: 20px;
+    color: #222;
+}
+
+.product-card p {
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 8px;
+    color: #555;
+}
+
+.price {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #164482;
+    margin-bottom: 20px;
+}
+
+.old-price {
+    color: #888;
+    text-decoration: line-through;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.product-card button {
+    width: 100%;
+    padding: 12px;
+    margin-top: auto;
+    border: none;
+    border-radius: 4px;
+    background-color: #4299e1;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background-color: #2563a6;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e63946;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 15px 55px;
+    color: #555;
+}
+
+/* Tablet Layout */
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    main {
+        padding: 35px 25px;
+    }
+}
+
+/* Mobile Layout */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    main {
+        padding: 48px 30px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .product-card {
+        padding: 16px;
+        min-height: 210px;
+    }
+
+    .product-card button {
+        font-size: 16px;
+    }
+}
