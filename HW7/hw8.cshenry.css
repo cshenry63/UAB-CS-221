@@ -1,4 +1,4 @@
-/* The colors and rounded corners create a calm, nature-inspired look. */
+/* The colors and rounded corners */
 * {
     box-sizing: border-box;
 }
@@ -10,7 +10,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Bonus: sticky header stays visible while scrolling the gallery. */
+/* sticky header */
 .site-header {
     position: sticky;
     top: 0;
@@ -32,7 +32,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Desktop: three equally sized columns with the required 20.2px gap. */
+/* Desktop has three columns */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 300px));
@@ -43,7 +43,7 @@ body {
     margin: 0 auto;
 }
 
-/* Each photo is a 300px-high div with a cover-sized background image. */
+/* Each photo is a 300px div with a background image */
 .gallery-item {
     position: relative;
     width: 100%;
@@ -57,45 +57,45 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Every other item has a dashed border to practice :nth-child(). */
+/* using :nth-child() every other item has a dashed border */
 .gallery-item:nth-child(even) {
     border-style: dashed;
     border-color: #d49d5b;
 }
 
-/* Six different background images hosted on Unsplash. */
+/* Six background images from Unsplash */
 .photo-one {
-    background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85");
+    background-image: url("https://images.unsplash.com/photo-1788910385096-929d5aab90eb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
 }
 
 .photo-two {
-    background-image: url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85");
+    background-image: url("https://plus.unsplash.com/premium_photo-1733864827286-d43afe9a1ae7?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
 }
 
 .photo-three {
-    background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85");
+    background-image: url("https://plus.unsplash.com/premium_photo-1733514432652-f97e1b036739?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
 }
 
 .photo-four {
-    background-image: url("https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=900&q=85");
+    background-image: url("https://plus.unsplash.com/premium_photo-1733864822176-106e2ae16dc4?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
 }
 
 .photo-five {
-    background-image: url("https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=900&q=85");
+    background-image: url("https://plus.unsplash.com/premium_photo-1697808994964-8908d1bfe482?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
 }
 
 .photo-six {
-    background-image: url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85");
+    background-image: url("https://plus.unsplash.com/premium_photo-1733864822221-fc87798f846d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
 }
 
-/* Bonus: the featured sixth photo stays still so it stands out. */
+/* used :not() here so it's a noticeable difference. sixth photo stays still */
 .gallery-item:not(.featured):hover {
     transform: scale(1.04);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
     z-index: 2;
 }
 
-/* ::before creates the gradient overlay and displays a custom caption. */
+/* used ::before to create the gradient overlay and displays a caption. */
 .gallery-item::before {
     content: attr(data-caption);
     position: absolute;
@@ -114,7 +114,7 @@ body {
     transition: opacity 0.3s ease;
 }
 
-/* ::after places a magnifying-glass character in the center. */
+/* used ::after for a magnifying glass in center */
 .gallery-item::after {
     content: "\1F50D";
     position: absolute;
@@ -127,7 +127,7 @@ body {
     transition: opacity 0.3s ease;
 }
 
-/* Captions and icons appear on hover, including on the featured item. */
+/* captions and icons appear on hover */
 .gallery-item:hover::before,
 .gallery-item:hover::after {
     opacity: 1;
@@ -139,14 +139,14 @@ footer {
     color: #486555;
 }
 
-/* Tablet: two columns. */
+/* Tablet, two columns */
 @media (max-width: 980px) {
     .gallery {
         grid-template-columns: repeat(2, minmax(0, 300px));
     }
 }
 
-/* Mobile: one column; photos shrink to fit narrow screens. */
+/* Mobile, one column, photos shrink */
 @media (max-width: 650px) {
     .gallery {
         grid-template-columns: minmax(0, 300px);
@@ -155,14 +155,5 @@ footer {
 
     .site-header h1 {
         font-size: 1.5rem;
-    }
-}
-
-/* Reduce motion for visitors who request fewer animations. */
-@media (prefers-reduced-motion: reduce) {
-    .gallery-item,
-    .gallery-item::before,
-    .gallery-item::after {
-        transition: none;
     }
 }
