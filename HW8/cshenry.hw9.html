@@ -14,18 +14,18 @@
         // Asks the user to enter a number
         let input = prompt("Enter a number:");
 
-        // Converting the input from a string to a number
+        // Converts the input from a string to a number
         let number = Number(input);
 
-        // Check if the user entered an invalid number or canceled.
+        // Checks if the user entered an invalid number or canceled
         if (input === null || input.trim() === "" || isNaN(number) || !Number.isInteger(number)) {
             console.log("Invalid input. Please enter a whole number.");
         }
-        // Use modulus to check if the number divides evenly by 2.
+        // Uses mod to check if the number divides by 2, if so, then it's even
         else if (number % 2 === 0) {
             console.log(number + " is an even number.");
         }
-        // If the number is not even, it must be odd.
+        // If it doesn't divide by 2 then it's odd
         else {
             console.log(number + " is an odd number.");
         }
