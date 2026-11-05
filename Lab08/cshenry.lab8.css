@@ -1,3 +1,52 @@
+body {
+    background-color: #27272a;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    padding: 12px 22px;
+    cursor: pointer;
+}
+
+#rock {
+    background-color: #ef6866;
+}
+
+#paper {
+    background-color: #b23de8;
+}
+
+#scissors {
+    background-color: #eaa4e7;
+}
+
+#rock::before {
+    content: "■ ";
+}
+
+#paper::before {
+    content: "▤ ";
+}
+
 #scissors::before {
     content: "✂ ";
 }
@@ -12,7 +61,7 @@ button:focus-visible {
 }
 
 #result {
-    color: yellow;
+    color: white;
     font-family: Georgia, serif;
     font-size: 22px;
     font-weight: bold;
