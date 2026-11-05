@@ -1,1 +1,20 @@
+#scissors::before {
+    content: "✂ ";
+}
 
+button:hover {
+    filter: brightness(1.15);
+}
+
+button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+#result {
+    color: yellow;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 22px;
+}
