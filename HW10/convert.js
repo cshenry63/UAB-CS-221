@@ -1,9 +1,9 @@
+
 window.addEventListener("DOMContentLoaded", domLoaded);
 
 function domLoaded() {
    const cInput = document.getElementById("cInput");
    const fInput = document.getElementById("fInput");
-   const convertButton = document.getElementById("convertButton");
    const errorMessage = document.getElementById("errorMessage");
    const weatherImage = document.getElementById("weatherImage");
 
@@ -15,45 +15,37 @@ function domLoaded() {
       cInput.value = "";
    });
 
-   convertButton.addEventListener("click", function() {
+   document.getElementById("convertButton").addEventListener("click", function() {
       let fahrenheit;
       let input;
 
       if (cInput.value !== "") {
          input = cInput.value;
-         const celsius = parseFloat(input);
-
-         if (isNaN(celsius)) {
-            errorMessage.textContent = input + " is not a number";
-            return;
-         }
-
-         fahrenheit = convertCtoF(celsius);
+         fahrenheit = convertCtoF(parseFloat(input));
          fInput.value = fahrenheit;
       }
       else {
          input = fInput.value;
          fahrenheit = parseFloat(input);
-
-         if (isNaN(fahrenheit)) {
-            errorMessage.textContent = input + " is not a number";
-            return;
-         }
-
          cInput.value = convertFtoC(fahrenheit);
       }
 
-      errorMessage.textContent = "";
-
-      if (fahrenheit < 32) {
-         weatherImage.src = "cold.png";
-      }
-      else if (fahrenheit <= 50) {
-         weatherImage.src = "cool.png";
+      if (isNaN(fahrenheit)) {
+         errorMessage.textContent = input + " is not a number";
       }
       else {
-         weatherImage.src = "warm.png";
-      }   
+         errorMessage.textContent = "";
+
+         if (fahrenheit < 32) {
+            weatherImage.src = "cold.png";
+         }
+         else if (fahrenheit <= 50) {
+            weatherImage.src = "cool.png";
+         }
+         else {
+            weatherImage.src = "warm.png";
+         }
+      }
    });
 }
 
