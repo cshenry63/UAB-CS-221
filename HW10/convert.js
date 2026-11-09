@@ -10,11 +10,9 @@ function domLoaded() {
    cInput.addEventListener("input", function() {
       fInput.value = "";
    });
-
    fInput.addEventListener("input", function() {
       cInput.value = "";
    });
-
    document.getElementById("convertButton").addEventListener("click", function() {
       let fahrenheit;
       let input;
@@ -48,11 +46,9 @@ function domLoaded() {
       }
    });
 }
-
 function convertCtoF(degreesCelsius) {
    return degreesCelsius * 9 / 5 + 32;
 }
-
 function convertFtoC(degreesFahrenheit) {
    return (degreesFahrenheit - 32) * 5 / 9;
 }
