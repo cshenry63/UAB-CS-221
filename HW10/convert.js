@@ -46,14 +46,14 @@ function domLoaded() {
       errorMessage.textContent = "";
 
       if (fahrenheit < 32) {
-         weatherImage.src = "images/cold.png";
+         weatherImage.src = "cold.png";
       }
       else if (fahrenheit <= 50) {
-         weatherImage.src = "images/cool.png";
+         weatherImage.src = "cool.png";
       }
       else {
-         weatherImage.src = "images/warm.png";
-      }
+         weatherImage.src = "warm.png";
+      }   
    });
 }
 
