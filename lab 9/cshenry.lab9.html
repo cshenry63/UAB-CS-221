@@ -8,68 +8,50 @@
   <script src="cshenry.lab9.js" defer></script>
 </head>
 <body>
-  <header class="masthead">
-    <div class="wrap brand">Book Finder</div>
-  </header>
-
-  <main class="wrap">
-    <section class="search-panel" aria-labelledby="search-title">
-      <h1 id="search-title">Find your next read.</h1>
+  <main class="container">
+    <section class="search-panel" aria-labelledby="page-title">
+      <h1 id="page-title">Book Finder</h1>
 
       <form id="search-form" novalidate>
         <label for="query">Search by title or author</label>
         <div class="search-row">
-          <input
-            id="query"
-            type="search"
-            placeholder="e.g., Pride and Prejudice or Jane Austen"
-            maxlength="200"
-            required
-          >
+          <input id="query" type="search" maxlength="200" required>
           <button type="submit">Search</button>
         </div>
       </form>
+
+      <p id="search-status" role="status"></p>
     </section>
 
     <div class="collection">
-      <section aria-labelledby="results-title">
+      <section class="panel" aria-labelledby="results-title">
         <h2 id="results-title">Search results</h2>
-        <p id="search-status" class="status" role="status">
-          Search for a title or author to get started.
-        </p>
         <ul id="results" class="books"></ul>
       </section>
 
-      <section class="shelf" aria-labelledby="shelf-title">
-        <h2 id="shelf-title">
-          My bookshelf <span id="shelf-count" class="count">0</span>
-        </h2>
-        <p id="shelf-status" class="status" role="status"></p>
+      <section class="panel" aria-labelledby="shelf-title">
+        <h2 id="shelf-title">My bookshelf</h2>
+        <p id="shelf-status" role="status"></p>
         <ul id="shelf" class="books"></ul>
       </section>
     </div>
 
     <template id="book-card">
       <li class="book">
-        <div class="cover"></div>
+        <h3></h3>
+        <p class="author"></p>
 
-        <div class="book-info">
-          <h3></h3>
-          <p class="author"></p>
+        <details>
+          <summary>Book details</summary>
+          <dl>
+            <dt>First published</dt>
+            <dd class="year"></dd>
+            <dt>Cataloged editions</dt>
+            <dd class="editions"></dd>
+          </dl>
+        </details>
 
-          <details>
-            <summary>Book details</summary>
-            <dl>
-              <dt>First published</dt>
-              <dd class="year"></dd>
-              <dt>Cataloged editions</dt>
-              <dd class="editions"></dd>
-            </dl>
-            <a class="book-link">View on Open Library</a>
-          </details>
-
-          <button class="book-action" type="button"></button>
-        </div>
+        <button class="book-action" type="button"></button>
       </li>
     </template>
   </main>
