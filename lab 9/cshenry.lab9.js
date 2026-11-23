@@ -1,194 +1,222 @@
-const libraryUrl = "https://openlibrary.org";
+const searchUrl = "https://openlibrary.org/search.json";
 const storageKey = "book-nook-bookshelf";
 
-const form = document.querySelector("#search-form");
-const queryInput = document.querySelector("#query");
-const searchStatus = document.querySelector("#search-status");
-const resultsList = document.querySelector("#results");
-const shelfList = document.querySelector("#shelf");
-const shelfStatus = document.querySelector("#shelf-status");
-const shelfCount = document.querySelector("#shelf-count");
-const bookTemplate = document.querySelector("#book-card");
+const form = document.getElementById("search-form");
+const queryInput = document.getElementById("query");
+const searchButton = form.querySelector("button");
+const searchStatus = document.getElementById("search-status");
+const resultsList = document.getElementById("results");
+const shelfStatus = document.getElementById("shelf-status");
+const shelfList = document.getElementById("shelf");
+const bookTemplate = document.getElementById("book-card");
 
-let requestNumber = 0;
+let searchResults = [];
 let bookshelf = [];
-
-// Read the saved bookshelf when the page opens.
-try {
-  const savedBooks = JSON.parse(localStorage.getItem(storageKey));
-  if (Array.isArray(savedBooks)) {
-    bookshelf = savedBooks.filter((book) => book && typeof book.id === "string");
-  }
-} catch {
-  showStatus(shelfStatus, "Saved books could not be loaded.", true);
-}
 
 function showStatus(element, message, isError = false) {
   element.textContent = message;
-  element.classList.toggle("error", isError);
+
+  if (isError) {
+    element.classList.add("error");
+  } else {
+    element.classList.remove("error");
+  }
 }
 
-// Convert an API record into the book object used by both lists.
+// Convert each Open Library record into an object used by both lists.
 function makeBook(record) {
-  const workId = /^(?:\/works\/)?(OL\d+W)$/.exec(record.key)?.[1];
+  let author = "Unknown author";
 
-  if (!workId || !record.title) {
-    return null;
+  if (record.author_name && record.author_name.length > 0) {
+    author = record.author_name.join(", ");
   }
 
   return {
-    id: workId,
+    id: record.key.replace("/works/", ""),
     title: record.title,
-    author: record.author_name?.join(", ") || "Unknown author",
-    year: record.first_publish_year ?? "Unknown",
-    editions: record.edition_count ?? "Unknown",
-    coverId: record.cover_i
+    author: author,
+    year: record.first_publish_year || "Unknown",
+    editions: record.edition_count || "Unknown"
   };
 }
 
-function makeBookCard(book, onShelf = false) {
+function isSaved(bookId) {
+  for (const book of bookshelf) {
+    if (book.id === bookId) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function makeBookCard(book, onShelf) {
   const card = bookTemplate.content.firstElementChild.cloneNode(true);
 
   card.querySelector("h3").textContent = book.title;
   card.querySelector(".author").textContent = book.author;
   card.querySelector(".year").textContent = book.year;
   card.querySelector(".editions").textContent = book.editions;
-  card.querySelector(".book-link").href =
-    `${libraryUrl}/works/${encodeURIComponent(book.id)}`;
-
-  if (book.coverId) {
-    const image = document.createElement("img");
-    const coverId = encodeURIComponent(book.coverId);
-
-    image.src = `https://covers.openlibrary.org/b/id/${coverId}-M.jpg?default=false`;
-    image.alt = "";
-    image.loading = "lazy";
-    image.addEventListener("error", () => image.remove());
-
-    card.querySelector(".cover").append(image);
-  }
 
   const button = card.querySelector(".book-action");
-  button.dataset.bookId = book.id;
 
   if (onShelf) {
     button.textContent = "Remove";
     button.setAttribute("aria-label", `Remove ${book.title} from bookshelf`);
-    button.addEventListener("click", () => updateShelf(book, true));
+    button.addEventListener("click", function () {
+      removeBook(book.id);
+    });
   } else {
-    button.addEventListener("click", () => updateShelf(book, false));
+    button.textContent = "Save to bookshelf";
+    button.addEventListener("click", function () {
+      saveBook(book);
+    });
+    updateSaveButton(button, book.id);
   }
 
   return card;
 }
 
-function syncResultButtons() {
-  for (const button of resultsList.querySelectorAll(".book-action")) {
-    const saved = bookshelf.some((book) => book.id === button.dataset.bookId);
-
-    button.disabled = saved;
-    button.textContent = saved ? "Saved to bookshelf" : "Save to bookshelf";
+function updateSaveButton(button, bookId) {
+  if (isSaved(bookId)) {
+    button.textContent = "Saved to bookshelf";
+    button.disabled = true;
+  } else {
+    button.textContent = "Save to bookshelf";
+    button.disabled = false;
   }
 }
 
-function renderShelf() {
-  shelfList.replaceChildren(...bookshelf.map((book) => makeBookCard(book, true)));
-  shelfCount.textContent = bookshelf.length;
+function displayBooks(books, list, onShelf) {
+  list.textContent = "";
+
+  for (const book of books) {
+    list.appendChild(makeBookCard(book, onShelf));
+  }
 }
 
-function updateShelf(book, remove) {
-  if (!remove && bookshelf.some((saved) => saved.id === book.id)) {
-    return;
+function displayBookshelf() {
+  displayBooks(bookshelf, shelfList, true);
+
+  if (bookshelf.length === 0) {
+    showStatus(shelfStatus, "Your bookshelf is empty.");
+  } else {
+    showStatus(shelfStatus, "");
   }
+}
 
-  const nextShelf = remove
-    ? bookshelf.filter((saved) => saved.id !== book.id)
-    : [...bookshelf, book];
-
-  // Update the page after the browser saves the new list.
+// localStorage stores strings. JSON converts the saved string back to an array.
+function loadBookshelf() {
   try {
-    localStorage.setItem(storageKey, JSON.stringify(nextShelf));
-  } catch {
-    showStatus(
-      shelfStatus,
-      "The bookshelf could not be updated. Check whether browser storage is enabled.",
-      true
-    );
-    return;
-  }
+    const savedBooks = localStorage.getItem(storageKey);
 
-  bookshelf = nextShelf;
-  renderShelf();
-  syncResultButtons();
+    if (savedBooks) {
+      const storedBooks = JSON.parse(savedBooks);
 
-  const message = remove ? `Removed “${book.title}”.` : `Saved “${book.title}”.`;
-  showStatus(shelfStatus, message);
+      if (Array.isArray(storedBooks)) {
+        bookshelf = storedBooks;
+      }
+    }
 
-  if (remove) {
-    (shelfList.querySelector(".book-action") || queryInput).focus();
+    displayBookshelf();
+  } catch (error) {
+    showStatus(shelfStatus, "Saved books could not be loaded.", true);
   }
 }
 
-async function searchBooks(event) {
+function updateBookshelf(nextBookshelf) {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(nextBookshelf));
+  } catch (error) {
+    showStatus(shelfStatus, "The bookshelf could not be updated.", true);
+    return;
+  }
+
+  bookshelf = nextBookshelf;
+  displayBookshelf();
+
+  // Update the buttons without closing any expanded search results.
+  const saveButtons = resultsList.querySelectorAll(".book-action");
+
+  for (let i = 0; i < searchResults.length; i++) {
+    updateSaveButton(saveButtons[i], searchResults[i].id);
+  }
+}
+
+function saveBook(book) {
+  if (!isSaved(book.id)) {
+    updateBookshelf(bookshelf.concat(book));
+  }
+}
+
+function removeBook(bookId) {
+  const nextBookshelf = [];
+
+  for (const book of bookshelf) {
+    if (book.id !== bookId) {
+      nextBookshelf.push(book);
+    }
+  }
+
+  updateBookshelf(nextBookshelf);
+}
+
+function searchBooks(event) {
   event.preventDefault();
 
-  const query = queryInput.value.trim();
-  const currentRequest = ++requestNumber;
-  resultsList.replaceChildren();
-  queryInput.removeAttribute("aria-invalid");
+  if (searchButton.disabled) {
+    return;
+  }
 
-  if (!query || query.length > 200) {
-    showStatus(searchStatus, "Enter a book title or author using 1–200 characters.", true);
+  const query = queryInput.value.trim();
+
+  if (query === "" || query.length > 200) {
+    showStatus(searchStatus, "Enter a title or author using 1–200 characters.", true);
     queryInput.setAttribute("aria-invalid", "true");
     queryInput.focus();
     return;
   }
 
+  queryInput.removeAttribute("aria-invalid");
+  searchResults = [];
+  resultsList.textContent = "";
+  searchButton.disabled = true;
   showStatus(searchStatus, "Searching Open Library…");
 
-  const params = new URLSearchParams({
-    q: query,
-    limit: "12",
-    fields: "key,title,author_name,first_publish_year,edition_count,cover_i"
-  });
+  const fields = "key,title,author_name,first_publish_year,edition_count";
+  const url = `${searchUrl}?q=${encodeURIComponent(query)}&limit=12&fields=${fields}`;
 
-  try {
-    const response = await fetch(`${libraryUrl}/search.json?${params}`);
+  fetch(url)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error(`Search returned HTTP ${response.status}`);
+      }
 
-    if (!response.ok) {
-      throw new Error(`Search returned HTTP ${response.status}`);
-    }
+      return response.json();
+    })
+    .then(function (data) {
+      for (const record of data.docs) {
+        if (record.key && record.title) {
+          searchResults.push(makeBook(record));
+        }
+      }
 
-    const data = await response.json();
-
-    // An older request should never overwrite a newer search.
-    if (currentRequest !== requestNumber) {
-      return;
-    }
-
-    const books = data.docs.map(makeBook).filter(Boolean);
-
-    if (!books.length) {
-      showStatus(searchStatus, `No books found for “${query}”. Try another title or author.`);
-      return;
-    }
-
-    resultsList.replaceChildren(...books.map((book) => makeBookCard(book)));
-    syncResultButtons();
-
-    const resultLabel = books.length === 1 ? "result" : "results";
-    showStatus(searchStatus, `Showing ${books.length} ${resultLabel} for “${query}”.`);
-  } catch {
-    if (currentRequest === requestNumber) {
-      showStatus(searchStatus, "Open Library could not be reached. Please try again.", true);
-    }
-  }
+      if (searchResults.length === 0) {
+        showStatus(searchStatus, `No books found for “${query}”.`);
+      } else {
+        displayBooks(searchResults, resultsList, false);
+        showStatus(searchStatus, "");
+      }
+    })
+    .catch(function () {
+      searchResults = [];
+      resultsList.textContent = "";
+      showStatus(searchStatus, "The search failed. Please try again.", true);
+    })
+    .finally(function () {
+      searchButton.disabled = false;
+    });
 }
 
-renderShelf();
-
-if (!bookshelf.length && !shelfStatus.textContent) {
-  showStatus(shelfStatus, "Save a book from your search results to add it here.");
-}
-
+loadBookshelf();
 form.addEventListener("submit", searchBooks);
